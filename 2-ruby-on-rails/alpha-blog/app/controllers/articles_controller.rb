@@ -10,15 +10,19 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    # @article = Article.new
+    @article = Article.new
   end
 
   def create
     # render plain: params[:article]
     @article=Article.new(params.require(:article).permit(:title, :description))
     # render plain: @article
-    @article.save
-    redirect_to article_path(@article)
+    if @article.save
+     redirect_to @article
+    else
+      render :new, status: :unprocessable_entity
+    end
+
   end
 
 end
