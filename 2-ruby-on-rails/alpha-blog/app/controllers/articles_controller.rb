@@ -18,7 +18,8 @@ class ArticlesController < ApplicationController
     @article=Article.new(params.require(:article).permit(:title, :description))
     # render plain: @article
     if @article.save
-     redirect_to @article
+      flash[:notice] = "Article was created succesfully"
+      redirect_to @article
     else
       render :new, status: :unprocessable_entity
     end
