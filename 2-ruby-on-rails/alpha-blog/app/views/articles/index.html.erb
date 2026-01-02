@@ -4,7 +4,7 @@
     <thead>
         <tr>Title</tr>
         <tr>Descriptio</tr>
-        <tr>Action</tr>
+        <tr colspan=2>Action</tr>
     </thead>
 
     <tbody>
@@ -12,8 +12,13 @@
             <tr>
                 <td><%=article.title%></td>
                 <td><%=article.description%></td>
-                <td>placeholder</td>
+                <td><%= button_to 'DELETE', article_path(article), method: :delete %></td>
+                <td><%= button_to 'EDIT', edit_article_path(article), method: :get %></td>
             </tr>
         <% end %>
     </tbody>
 </table>
+
+<p>
+    <%= link_to 'Create New Article' , new_article_path %>
+</p>
