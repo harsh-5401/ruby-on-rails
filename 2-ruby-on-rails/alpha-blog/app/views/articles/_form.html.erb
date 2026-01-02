@@ -1,7 +1,3 @@
-<%
-=begin%>
- <h1>Create a new Article</h1>
-
 <% if @article.errors.any? %>
   <h2>Fix the following errors:</h2>
   <ul>
@@ -12,7 +8,7 @@
 <% end %>
 
 
-<%= form_with scope: :article, url: articles_path, local: true do |f| %>
+<%= form_with(model: @article ,local:true) do |f| %>
 
   <p>
     <%= f.label :title %><br>
@@ -28,14 +24,4 @@
     <%= f.submit %>
   </p>
 
-<% end %> 
-<%
-=end%>
-
-
-
-
-<h1>Create a new Article</h1>
-
-<%= render "form" %>
-
+<% end %>
